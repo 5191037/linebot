@@ -62,7 +62,7 @@ def callback():
 
     client = MongoClient('localhost', 27017)
     db = client.scraping
-    collection = db.gihyo_fe
+    collection = db.bot_fe
 
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
