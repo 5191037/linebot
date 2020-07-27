@@ -36,7 +36,9 @@ api = Api(app)
 # channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
 # channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
 channel_secret = 'ccbef0158c3102cc91653b887bcd5101'
-channel_access_token = '5aCn1mIzYby8URWx7i6bjxp8I0Egn9ptN7NhG8BbxZ+bqKPL7t6Dc6wLTRek4mOHPUKtyK2nDqHedeiMcs8ZQ42cCpTD7wA+y62epQ/G1N9W3O6cosz63nx3fwxJxUd6S0Lgbe7KcCj8c1MyludDAQdB04t89/1O/w1cDnyilFU='
+channel_access_token = '5aCn1mIzYby8URWx7i6bjxp8I0Egn9ptN7NhG8BbxZ' \
+                       '+bqKPL7t6Dc6wLTRek4mOHPUKtyK2nDqHedeiMcs8ZQ42cCpTD7wA+y62epQ' \
+                       '/G1N9W3O6cosz63nx3fwxJxUd6S0Lgbe7KcCj8c1MyludDAQdB04t89/1O/w1cDnyilFU= '
 
 if channel_secret is None:
     print('Specify LINE_CHANNEL_SECRET as environment variable.')
@@ -83,38 +85,38 @@ def callback():
         #     TextSendMessage(text=return_text)
         # )
 
-        event.message.text = "攻略"
-        hard_list = ["モバイルゲーム", "コンシューマーゲーム"]
-        items = [QuickReplyButton(action=MessageAction(label=f"{hard}", text=f"{hard}")) for hard in hard_list]
-        messages = TextSendMessage(text="ゲームのハードは？",quick_reply=QuickReply(items=items))
-        line_bot_api.reply_message(event.reply_token, messages=messages)
+        if event.message.text == "攻略":
+            hard_list = ["モバイルゲーム", "コンシューマーゲーム"]
+            items = [QuickReplyButton(action=MessageAction(label=f"{hard}", text=f"{hard}")) for hard in hard_list]
+            messages = TextSendMessage(text="ゲームのハードは？",quick_reply=QuickReply(items=items))
+            line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        event.message.text = "モバイルゲーム"
-        mobile_list = ["FGO", "パズドラ", "グラブル", "遊戯王デュエルリンクス", "ミラクルニキ",
-                       "陰陽師", "ドッカンバトル", "ウマ娘", "ブラウンダスト", "キンスレ",
-                       "ポケ森", "モンハンライダーズ", "ARK", "リン", "トラハ",
-                       "ラングリッサー", "アイアンサーガ", "アナムネシス", "ツイステ", "CODモバイル",
-                       "デュエマプレイス", "AFKアリーナ", "エンゲージソウルズ", "ドラクエタクト", "クレストリア",
-                       "エピックセブン", "ポケットタウン", "アルカラスト", "アストロキングス", "ラストエスケイプ",
-                       "脱出ゲーム", "ダンジョンメーカー", "オクトパストラベラー大陸の覇者"]
-        items = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in mobile_list]
-        messages = TextSendMessage(text="探してるゲームは？",quick_reply=QuickReply(items=items))
-        line_bot_api.reply_message(event.reply_token, messages=messages)
+        if event.message.text == "モバイルゲーム":
+            m_list = ["FGO", "パズドラ", "グラブル", "遊戯王デュエルリンクス", "ミラクルニキ",
+                      "陰陽師", "ドッカンバトル", "ウマ娘", "ブラウンダスト", "キンスレ",
+                      "ポケ森", "モンハンライダーズ", "ARK", "リン", "トラハ",
+                      "ラングリッサー", "アイアンサーガ", "アナムネシス", "ツイステ", "CODモバイル",
+                      "デュエマプレイス", "AFKアリーナ", "エンゲージソウルズ", "ドラクエタクト", "クレストリア",
+                      "エピックセブン", "ポケットタウン", "アルカラスト", "アストロキングス", "ラストエスケイプ",
+                      "脱出ゲーム", "ダンジョンメーカー", "オクトパストラベラー大陸の覇者"]
+            i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in m_list]
+            messages = TextSendMessage(text="探してるゲームは？",quick_reply=QuickReply(items=i))
+            line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        event.message.text = "コンシューマーゲーム"
-        consumer_list = ["艦これ", "あつ森", "ラストオブアス2", "ゼノブレイドリマスター（DE）", "ゴーストオブツシマ",
-                         "ドラゴンボールZカカロット", "ニンジャラ（Ninjala）", "グラブルVS", "R6S", "デスストランディング",
-                         "Dead by Daylight", "ジャッジアイズ", "RDR2", "スパイダーマンPS4", "PixARK",
-                         "オクトパストラベラー", "二ノ国2", "仁王2", "ダークソウルリマスタード", "SEKIRO",
-                         "聖剣伝説3", "ドラクエ2", "ドラクエ3", "ドラクエ5", "ドラクエ11S",
-                         "ドラクエビルダーズ2", "マリオオデッセイ", "マリオメーカー2", "新サクラ大戦", "moon",
-                         "ウィッチャー3", "ペルソナ5R", "ペルソナ5スクランブル", "龍が如く極2", "龍が如く3",
-                         "龍が如く4", "龍が如く5", "龍が如く7", "北斗が如く", "ポケモン剣盾",
-                         "バイオ7", "バイオRE2", "バイオRE3", "キングダムハーツ3", "FF7",
-                         "FF7リメイク", "FF8", "FF10"]
-        items = [QuickReplyButton(action=MessageAction(label=f"{consumer}", text=f"{consumer}")) for consumer in consumer_list]
-        messages = TextSendMessage(text="探してるゲームは？",quick_reply=QuickReply(items=items))
-        line_bot_api.reply_message(event.reply_token, messages=messages)
+        if event.message.text == "コンシューマーゲーム":
+            c_list = ["艦これ", "あつ森", "ラストオブアス2", "ゼノブレイドリマスター（DE）", "ゴーストオブツシマ",
+                      "ドラゴンボールZカカロット", "ニンジャラ（Ninjala）", "グラブルVS", "R6S", "デスストランディング",
+                      "Dead by Daylight", "ジャッジアイズ", "RDR2", "スパイダーマンPS4", "PixARK",
+                      "オクトパストラベラー", "二ノ国2", "仁王2", "ダークソウルリマスタード", "SEKIRO",
+                      "聖剣伝説3", "ドラクエ2", "ドラクエ3", "ドラクエ5", "ドラクエ11S",
+                      "ドラクエビルダーズ2", "マリオオデッセイ", "マリオメーカー2", "新サクラ大戦", "moon",
+                      "ウィッチャー3", "ペルソナ5R", "ペルソナ5スクランブル", "龍が如く極2", "龍が如く3",
+                      "龍が如く4", "龍が如く5", "龍が如く7", "北斗が如く", "ポケモン剣盾",
+                      "バイオ7", "バイオRE2", "バイオRE3", "キングダムハーツ3", "FF7",
+                      "FF7リメイク", "FF8", "FF10"]
+            i = [QuickReplyButton(action=MessageAction(label=f"{consumer}", text=f"{consumer}")) for consumer in c_list]
+            messages = TextSendMessage(text="探してるゲームは？",quick_reply=QuickReply(items=i))
+            line_bot_api.reply_message(event.reply_token, messages=messages)
 
         return_text = ""
         for record in collection.find(filter={'name': {'$regex': event.message.text}}):
