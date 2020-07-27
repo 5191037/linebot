@@ -76,46 +76,77 @@ def callback():
         if not isinstance(event.message, TextMessage):
             continue
 
-        # return_text = ""
-        # for record in collection.find(filter={'name': {'$regex': event.message.text}}):
-        #     return_text += record["name"] + record["url"] + "\n"
-        #
-        # line_bot_api.reply_message(
-        #     event.reply_token,
-        #     TextSendMessage(text=return_text)
-        # )
-
         if event.message.text == "攻略":
-            hard_list = ["モバイルゲーム", "コンシューマーゲーム"]
+            hard_list = ["ア行", "カ行", "サ行", "タ行", "ナ行",
+                         "ハ行", "マ行", "ヤ行", "ラ行"]
             items = [QuickReplyButton(action=MessageAction(label=f"{hard}", text=f"{hard}")) for hard in hard_list]
-            messages = TextSendMessage(text="ゲームのハードは？",quick_reply=QuickReply(items=items))
+            messages = TextSendMessage(text="ゲームの頭文字は？",quick_reply=QuickReply(items=items))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "モバイルゲーム":
-            m_list = ["FGO", "パズドラ", "グラブル", "遊戯王デュエルリンクス", "ミラクルニキ",
-                      "陰陽師", "ドッカンバトル", "ウマ娘", "ブラウンダスト", "キンスレ",
-                      "ポケ森", "モンハンライダーズ", "ARK", "リン", "トラハ",
-                      "ラングリッサー", "アイアンサーガ", "アナムネシス", "ツイステ", "CODモバイル",
-                      "デュエマプレイス", "AFKアリーナ", "エンゲージソウルズ", "ドラクエタクト", "クレストリア",
-                      "エピックセブン", "ポケットタウン", "アルカラスト", "アストロキングス", "ラストエスケイプ",
-                      "脱出ゲーム", "ダンジョンメーカー", "オクトパストラベラー大陸の覇者"]
+        if event.message.text == "ア行":
+            a_list = ["ARK", "アイアンサーガ", "アストロキングス", "あつ森", "アナムネシス",
+                      "アルカラスト", "ウィッチャー3", "ウマ娘", "AFKアリーナ", "FGO",
+                      "エピックセブン", "エンゲージソウルズ", "オクトパストラベラー", "オクトパストラベラー大陸の覇者", "陰陽師攻"]
+            i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in a_list]
+            messages = TextSendMessage(text="この中にある？",quick_reply=QuickReply(items=i))
+            line_bot_api.reply_message(event.reply_token, messages=messages)
+
+        if event.message.text == "カ行":
+            k_list = ["艦これ", "キンスレ", "キングダムハーツ3", "クレストリア", "グラブル",
+                      "グラブルVS", "CODモバイル", "ゴーストオブツシマ"]
+            i = [QuickReplyButton(action=MessageAction(label=f"{consumer}", text=f"{consumer}")) for consumer in k_list]
+            messages = TextSendMessage(text="この中にある？",quick_reply=QuickReply(items=i))
+            line_bot_api.reply_message(event.reply_token, messages=messages)
+
+        if event.message.text == "サ行":
+            s_list = ["新サクラ大戦", "ジャッジアイズ", "スパイダーマンPS4", "聖剣伝説3", "SEKIRO",
+                      "ゼノブレイドリマスター（DE）"]
+            i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in s_list]
+            messages = TextSendMessage(text="この中にある？",quick_reply=QuickReply(items=i))
+            line_bot_api.reply_message(event.reply_token, messages=messages)
+
+        if event.message.text == "タ行":
+            t_list = ["ダークソウルリマスタード", "脱出ゲーム", "ダンジョンメーカー", "ツイステ", "デスストランディング",
+                      "Dead by Daylight", "デュエマプレイス", "トラハ", "ドッカンバトル", "ドラクエ2",
+                      "ドラクエ3", "ドラクエ5", "ドラクエ11S", "ドラクエビルダーズ2", "ドラクエタクト",
+                      "ドラゴンボールZカカロット"]
+            i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in t_list]
+            messages = TextSendMessage(text="この中にある？",quick_reply=QuickReply(items=i))
+            line_bot_api.reply_message(event.reply_token, messages=messages)
+
+        if event.message.text == "ナ行":
+            n_list = ["仁王2", "二ノ国2", "ニンジャラ（Ninjala）"]
+            i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in n_list]
+            messages = TextSendMessage(text="この中にある？",quick_reply=QuickReply(items=i))
+            line_bot_api.reply_message(event.reply_token, messages=messages)
+
+        if event.message.text == "ハ行":
+            h_list = ["パズドラ", "FF7", "FF7リメイク", "FF8", "FF10",
+                      "バイオ7", "バイオRE2", "バイオRE3", "PixARK", "ブラウンダスト",
+                      "ペルソナ5R", "ペルソナ5スクランブル", "北斗が如く", "ポケットタウン", "ポケ森",
+                      "ポケモン剣盾"]
+            i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in h_list]
+            messages = TextSendMessage(text="この中にある？",quick_reply=QuickReply(items=i))
+            line_bot_api.reply_message(event.reply_token, messages=messages)
+
+        if event.message.text == "マ行":
+            m_list = ["マリオオデッセイ", "マリオメーカー2", "ミラクルニキ", "moon", "モンハンライダーズ"]
             i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in m_list]
-            messages = TextSendMessage(text="探してるゲームは？",quick_reply=QuickReply(items=i))
+            messages = TextSendMessage(text="この中にある？",quick_reply=QuickReply(items=i))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "コンシューマーゲーム":
-            c_list = ["艦これ", "あつ森", "ラストオブアス2", "ゼノブレイドリマスター（DE）", "ゴーストオブツシマ",
-                      "ドラゴンボールZカカロット", "ニンジャラ（Ninjala）", "グラブルVS", "R6S", "デスストランディング",
-                      "Dead by Daylight", "ジャッジアイズ", "RDR2", "スパイダーマンPS4", "PixARK",
-                      "オクトパストラベラー", "二ノ国2", "仁王2", "ダークソウルリマスタード", "SEKIRO",
-                      "聖剣伝説3", "ドラクエ2", "ドラクエ3", "ドラクエ5", "ドラクエ11S",
-                      "ドラクエビルダーズ2", "マリオオデッセイ", "マリオメーカー2", "新サクラ大戦", "moon",
-                      "ウィッチャー3", "ペルソナ5R", "ペルソナ5スクランブル", "龍が如く極2", "龍が如く3",
-                      "龍が如く4", "龍が如く5", "龍が如く7", "北斗が如く", "ポケモン剣盾",
-                      "バイオ7", "バイオRE2", "バイオRE3", "キングダムハーツ3", "FF7",
-                      "FF7リメイク", "FF8", "FF10"]
-            i = [QuickReplyButton(action=MessageAction(label=f"{consumer}", text=f"{consumer}")) for consumer in c_list]
-            messages = TextSendMessage(text="探してるゲームは？",quick_reply=QuickReply(items=i))
+        if event.message.text == "ヤ行":
+            y_list = ["遊戯王デュエルリンクス"]
+            i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in y_list]
+            messages = TextSendMessage(text="この中にある？",quick_reply=QuickReply(items=i))
+            line_bot_api.reply_message(event.reply_token, messages=messages)
+
+        if event.message.text == "ラ行":
+            r_list = ["ラストエスケイプ", "ラストオブアス2", "ラングリッサー", "リン", "龍が如く極2",
+                      "龍が如く3", "龍が如く4", "龍が如く5", "龍が如く7", "R6S",
+                      "RDR2"]
+            i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in r_list]
+            messages = TextSendMessage(text="この中にある？",quick_reply=QuickReply(items=i))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
         return_text = ""
