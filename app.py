@@ -73,7 +73,7 @@ def callback():
 
         return_text = ""
         for record in collection.find(filter={'name': {'$regex': event.message.text}}):
-            return_text += record["name"] + record["url"] + "\n"
+            return_text += record["name"] + record["url"] + "\n" + "\n"
 
         line_bot_api.reply_message(
             event.reply_token,
