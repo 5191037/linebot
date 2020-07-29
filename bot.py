@@ -53,6 +53,17 @@ def kamigame(URL):
         collection.insert_one(my_dict)
         i += 1
 
+    site_info = soup.select('#latest_news_list')
+    news = site_info[0].find_all('a')
+
+    for info in tqdm(news):
+        name = info.find(class_='txt--title').get_text() + "【NEWS】"
+        url = (info.get('href'))
+        # print(name, url + '\n')
+        my_dict = {'_id': i, 'name': name, 'url': url}
+        collection.insert_one(my_dict)
+        i += 1
+
 
 if __name__ == "__main__":
     args = sys.argv
