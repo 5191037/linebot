@@ -38,7 +38,7 @@ def kamigame(URL):
         name = info.find(class_='txt--title').get_text()
         url = (info.get('href'))
         # print(name, url + '\n')
-        my_dict = {'_id': "NEWS" + i, 'name': name, 'url': url}
+        my_dict = {'_id': i, 'name': name, 'url': url}
         collection.insert_one(my_dict)
         i += 1
 

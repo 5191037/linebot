@@ -196,7 +196,7 @@ def connect_2(events):
             continue
 
         if event.message.text == "NEWS":
-            for record in collection.find(filter={'_id': {'$regex': "NEWS"}}):
+            for record in collection.find(filter={'_id': {'$regex': int}}):
                 event.message.text += record["name"] + record["url"] + "\n"
 
         line_bot_api.reply_message(
