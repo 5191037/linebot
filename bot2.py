@@ -12,9 +12,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-"""
-攻略情報ページの一覧を回収するソースコード
-"""
 
 def kamigame(URL):
     options = Options()
@@ -28,22 +25,12 @@ def kamigame(URL):
     driver.close()
     driver.quit()
 
-    site_info = soup.select('#top_mobile_game_list')
+    site_info = soup.select('#latest_news_list')
     mobile = site_info[0].find_all('a')
 
     for info in tqdm(mobile):
-        name = info.get_text()
-        url = ("https://kamigame.jp" + info.get('href'))
-        # print(name, url + '\n')
-        my_dict = {'name': name, 'url': url}
-        collection.insert_one(my_dict)
-
-    site_info = soup.select('#top_consumer_game_list')
-    consumer = site_info[0].find_all('a')
-
-    for info in tqdm(consumer):
-        name = info.get_text()
-        url = ("https://kamigame.jp" + info.get('href'))
+        name = info.find(class_='txt--title').get_text()
+        url = (info.get('href'))
         # print(name, url + '\n')
         my_dict = {'name': name, 'url': url}
         collection.insert_one(my_dict)
@@ -65,6 +52,6 @@ if __name__ == "__main__":
 
     client = MongoClient('localhost', 27017)
     db = client.scraping
-    collection = db.bot_fe
+    collection = db.bot2_fe
 
     kamigame(URL)

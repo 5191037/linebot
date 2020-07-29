@@ -82,10 +82,6 @@ def callback():
             messages = TextSendMessage(text="検索を始めます", quick_reply=QuickReply(items=items))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        # if event.message.text == "攻略一覧":
-        #     for record in collection.find(filter={'name': {'$regex': event.message.text}}):
-        #         event.message.text += record["name"] + "\n"
-
         if event.message.text == "五十音順":
             hard_list = ["ア行", "カ行", "サ行", "タ行", "ナ行",
                          "ハ行", "マ行", "ヤ行", "ラ行"]
