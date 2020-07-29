@@ -77,7 +77,7 @@ def callback():
         collection = db.bot_fe
         collection2 = db.bot2_fe
 
-        if event.message.text == "検索":
+        if event.message.text == "【検索】":
             hard_list = ["五十音順", "シリーズ"]
             items = [QuickReplyButton(action=MessageAction(label=f"{hard}", text=f"{hard}")) for hard in hard_list]
             messages = TextSendMessage(text="検索を始めます", quick_reply=QuickReply(items=items))
