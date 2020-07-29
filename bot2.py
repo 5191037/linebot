@@ -12,6 +12,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
+"""
+攻略ニュースを回収するソースコード
+"""
 
 def kamigame(URL):
     options = Options()
