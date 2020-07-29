@@ -79,7 +79,7 @@ def callback():
         if event.message.text == "検索":
             hard_list = ["攻略一覧", "五十音順", "シリーズ"]
             items = [QuickReplyButton(action=MessageAction(label=f"{hard}", text=f"{hard}")) for hard in hard_list]
-            messages = TextSendMessage(text="検索方法は？", quick_reply=QuickReply(items=items))
+            messages = TextSendMessage(text="", quick_reply=QuickReply(items=items))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
         if event.message.text == "攻略一覧":
