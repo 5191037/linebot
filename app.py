@@ -65,6 +65,17 @@ def callback():
     except InvalidSignatureError:
         abort(400)
 
+    if events == "検索":
+        connect_1(events)
+    elif events == "NEWS":
+        connect_2(events)
+
+
+def connect_1(events):
+    """
+    攻略情報一覧から検索する
+    """
+
     client = MongoClient('localhost', 27017)
     db = client.scraping
     collection = db.bot_fe
@@ -163,6 +174,34 @@ def callback():
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=return_text)
+        )
+
+    return 'OK'
+
+
+def connect_2(events):
+    """
+    攻略情報一覧から検索する
+    """
+
+    client = MongoClient('localhost', 27017)
+    db = client.scraping
+    collection = db.bot2_fe
+
+    # if event is MessageEvent and message is TextMessage, then echo text
+    for event in events:
+        if not isinstance(event, MessageEvent):
+            continue
+        if not isinstance(event.message, TextMessage):
+            continue
+
+        if event.message.text == "NEWS":
+            for record in collection.find(filter={'name': {'$regex': "【"}}):
+                event.message.text += record["name"] + record["url"] + "\n"
+
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
         )
 
     return 'OK'
