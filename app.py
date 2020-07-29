@@ -75,7 +75,6 @@ def callback():
         client = MongoClient('localhost', 27017)
         db = client.scraping
         collection = db.bot_fe
-        collection2 = db.bot2_fe
 
         if event.message.text == "【検索】":
             hard_list = ["五十音順", "シリーズ"]
@@ -159,7 +158,7 @@ def callback():
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
         if event.message.text == "NEWS":
-            for record in collection2.find(filter={'name': {'$regex': event.message.text}}):
+            for record in collection.find(filter={'name': {'$regex': event.message.text}}):
                 event.message.text += record["name"] + record["url"] + "\n"
 
         return_text = ""
