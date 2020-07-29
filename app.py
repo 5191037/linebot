@@ -158,6 +158,10 @@ def callback():
             messages = TextSendMessage(text="シリーズ", quick_reply=QuickReply(items=items))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
+        if event.message.text == "NEWS":
+            for record in collection2.find(filter={'name': {'$regex': event.message.text}}):
+                event.message.text += record["name"] + record["url"] + "\n"
+
         return_text = ""
         for record in collection.find(filter={'name': {'$regex': event.message.text}}):
             return_text += record["name"] + record["url"] + "\n"
@@ -166,10 +170,6 @@ def callback():
             event.reply_token,
             TextSendMessage(text=return_text)
         )
-
-        if event.message.text == "NEWS":
-            for record in collection2.find(filter={'_id': {'$regex': int}}):
-                event.message.text += record["name"] + record["url"] + "\n"
 
     return 'OK'
 

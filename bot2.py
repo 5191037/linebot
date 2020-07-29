@@ -35,7 +35,7 @@ def kamigame(URL):
     i = 0
 
     for info in tqdm(mobile):
-        name = info.find(class_='txt--title').get_text()
+        name = info.find(class_='txt--title').get_text() + "【NEWS】"
         url = (info.get('href'))
         # print(name, url + '\n')
         my_dict = {'_id': i, 'name': name, 'url': url}
