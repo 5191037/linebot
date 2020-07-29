@@ -181,7 +181,7 @@ def connect_1(events):
 
 def connect_2(events):
     """
-    攻略情報一覧から検索する
+    攻略NEWSから検索する
     """
 
     client = MongoClient('localhost', 27017)
@@ -196,7 +196,7 @@ def connect_2(events):
             continue
 
         if event.message.text == "NEWS":
-            for record in collection.find(filter={'name': {'$regex': "【"}}):
+            for record in collection.find(filter={'_id': {'$regex': "NEWS"}}):
                 event.message.text += record["name"] + record["url"] + "\n"
 
         line_bot_api.reply_message(

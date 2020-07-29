@@ -16,6 +16,7 @@ from selenium.common.exceptions import TimeoutException
 攻略ニュースを回収するソースコード
 """
 
+
 def kamigame(URL):
     options = Options()
     options.add_argument('--headless')
@@ -31,12 +32,13 @@ def kamigame(URL):
     site_info = soup.select('#latest_news_list')
     mobile = site_info[0].find_all('a')
 
-    for info in tqdm(mobile):
+    for i, info in tqdm(mobile):
         name = info.find(class_='txt--title').get_text()
         url = (info.get('href'))
         # print(name, url + '\n')
-        my_dict = {'name': name, 'url': url}
+        my_dict = {'_id': "NEWS" + i + 1, 'name': name, 'url': url}
         collection.insert_one(my_dict)
+        i += 1
 
 
 if __name__ == "__main__":
