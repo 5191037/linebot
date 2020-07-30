@@ -7,4 +7,3 @@ steps:
     commands:
       - mkdir /drone_test
       - sleep 60
-
