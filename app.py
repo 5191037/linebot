@@ -89,14 +89,14 @@ def callback():
             messages = TextSendMessage(text="頭文字で検索します", quick_reply=QuickReply(items=items))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "ア行":
+        elif event.message.text == "ア行":
             a_list = ["AFKアリーナ", "ARK", "あつ森", "ウィッチャー3", "ウマ娘",
                       "エピックセブン", "エンゲージソウルズ", "オクトパストラベラー大陸の覇者", "オクトパストラベラー", "陰陽師"]
             i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in a_list]
             messages = TextSendMessage(text="ア行一覧", quick_reply=QuickReply(items=i))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "カ行":
+        elif event.message.text == "カ行":
             k_list = ["艦これ", "キンスレ", "キングダムハーツ3", "クレストリア", "グラブル",
                       "グラブルVS", "CODモバイル", "ゴーストオブツシマ"]
             i = [QuickReplyButton(action=MessageAction(label=f"{consumer}", text=f"{consumer}")) for consumer in
@@ -104,46 +104,46 @@ def callback():
             messages = TextSendMessage(text="カ行一覧", quick_reply=QuickReply(items=i))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "サ行":
+        elif event.message.text == "サ行":
             s_list = ["新サクラ大戦", "ジャッジアイズ", "スパイダーマンPS4", "聖剣伝説3", "SEKIRO",
                       "ゼノブレイドリマスター（DE）"]
             i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in s_list]
             messages = TextSendMessage(text="サ行一覧", quick_reply=QuickReply(items=i))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "タ行":
+        elif event.message.text == "タ行":
             t_list = ["ダークソウルリマスタード", "デスストランディング", "Dead by Daylight", "デュエマプレイス", "ドッカンバトル",
                       "ドラクエ5", "ドラクエ11S", "ドラクエビルダーズ2", "ドラクエタクト", "ドラゴンボールZカカロット"]
             i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in t_list]
             messages = TextSendMessage(text="タ行一覧", quick_reply=QuickReply(items=i))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "ナ行":
+        elif event.message.text == "ナ行":
             n_list = ["仁王2", "二ノ国2", "ニンジャラ（Ninjala）"]
             i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in n_list]
             messages = TextSendMessage(text="ナ行一覧", quick_reply=QuickReply(items=i))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "ハ行":
+        elif event.message.text == "ハ行":
             h_list = ["パズドラ", "FF7リメイク", "FF8", "FF10", "バイオ7",
                       "バイオRE3", "ペルソナ5R", "ペルソナ5スクランブル", "ポケ森", "ポケモン剣盾"]
             i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in h_list]
             messages = TextSendMessage(text="ハ行一覧", quick_reply=QuickReply(items=i))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "マ行":
+        elif event.message.text == "マ行":
             m_list = ["マリオオデッセイ", "マリオメーカー2", "ミラクルニキ", "moon", "モンハンライダーズ"]
             i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in m_list]
             messages = TextSendMessage(text="マ行一覧", quick_reply=QuickReply(items=i))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "ヤ行":
+        elif event.message.text == "ヤ行":
             y_list = ["遊戯王デュエルリンクス"]
             i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in y_list]
             messages = TextSendMessage(text="ヤ行一覧", quick_reply=QuickReply(items=i))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        if event.message.text == "ラ行":
+        elif event.message.text == "ラ行":
             r_list = ["ラストエスケイプ", "ラストオブアス2", "ラングリッサー", "龍が如く極2", "龍が如く3",
                       "龍が如く4", "龍が如く5", "龍が如く7", "R6S", "RDR2"]
             i = [QuickReplyButton(action=MessageAction(label=f"{mobile}", text=f"{mobile}")) for mobile in r_list]
