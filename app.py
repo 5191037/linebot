@@ -26,8 +26,10 @@ from pymongo import MongoClient
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, QuickReplyButton, MessageAction, QuickReply,
+    MessageEvent, TextMessage, TextSendMessage, QuickReplyButton, MessageAction, QuickReply, FlexSendMessage,
 )
+
+from flex import Linebot
 
 app = Flask(__name__)
 api = Api(app)
@@ -163,7 +165,9 @@ def callback():
 
         return_text = ""
         for record in collection.find(filter={'name': {'$regex': event.message.text}}):
-            return_text += record["name"] + record["url"] + "\n"
+            payload = Linebot.flex(record["name"], record["url"], record["image"])
+            container_obj = FlexSendMessage.new_from_json_dict(payload)
+            line_bot_api.reply_message(event.reply_token, messages=container_obj)
 
         line_bot_api.reply_message(
             event.reply_token,
