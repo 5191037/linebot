@@ -29,15 +29,15 @@ def kamigame(URL):
     driver.close()
     driver.quit()
 
+    i = 0
     site_info = soup.select('#top_mobile_game_list')
     mobile = site_info[0].find_all('a')
-
-    i = 0
 
     for info in tqdm(mobile):
         name = info.get_text()
         url = ("https://kamigame.jp" + info.get('href'))
-        # print(name, url + '\n')
+        image = ("https://kamigame.jp" + info.find('img').get('src'))
+        # print(name, url, image + '\n')
         my_dict = {'_id': i, 'name': name, 'url': url}
         collection.insert_one(my_dict)
         i += 1
@@ -48,8 +48,9 @@ def kamigame(URL):
     for info in tqdm(consumer):
         name = info.get_text()
         url = ("https://kamigame.jp" + info.get('href'))
-        # print(name, url + '\n')
-        my_dict = {'_id': i, 'name': name, 'url': url}
+        image = ("https://kamigame.jp" + info.find('img').get('src'))
+        # print(name, url, image + '\n')
+        my_dict = {'_id': i, 'name': name, 'url': url, 'image': image}
         collection.insert_one(my_dict)
         i += 1
 
@@ -58,9 +59,10 @@ def kamigame(URL):
 
     for info in tqdm(news):
         name = info.find(class_='txt--title').get_text() + "【News】"
-        url = (info.get('href'))
-        # print(name, url + '\n')
-        my_dict = {'_id': i, 'name': name, 'url': url}
+        url = info.get('href')
+        image = info.find(class_='vertical-list__img-wrap').find('img').get('src')
+        # print(name, url, image + '\n')
+        my_dict = {'_id': i, 'name': name, 'url': url, 'image': image}
         collection.insert_one(my_dict)
         i += 1
 

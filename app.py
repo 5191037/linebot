@@ -78,9 +78,12 @@ def callback():
         db = client.scraping
         collection = db.bot_fe
 
+        return_text = ""
         if event.message.text == "News":
             for record in collection.find(filter={'name': {'$regex': event.message.text}}):
-                event.message.text += record["name"] + record["url"] + "\n"
+                payload = Linebot.flex(record["name"], record["url"])
+                container_obj = FlexSendMessage.new_from_json_dict(payload)
+                line_bot_api.reply_message(event.reply_token, messages=container_obj)
 
         if event.message.text == "Search":
             hard_list = ["五十音順", "シリーズ"]
@@ -163,11 +166,10 @@ def callback():
             messages = TextSendMessage(text="シリーズ", quick_reply=QuickReply(items=items))
             line_bot_api.reply_message(event.reply_token, messages=messages)
 
-        return_text = ""
-        for record in collection.find(filter={'name': {'$regex': event.message.text}}):
-            payload = Linebot.flex(record["name"], record["url"], record["image"])
-            container_obj = FlexSendMessage.new_from_json_dict(payload)
-            line_bot_api.reply_message(event.reply_token, messages=container_obj)
+        # for record in collection.find(filter={'name': {'$regex': event.message.text}}):
+        #     payload = Linebot.flex(record["name"], record["url"], record["image"])
+        #     container_obj = FlexSendMessage.new_from_json_dict(payload)
+        #     line_bot_api.reply_message(event.reply_token, messages=container_obj)
 
         line_bot_api.reply_message(
             event.reply_token,

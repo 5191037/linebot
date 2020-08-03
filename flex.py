@@ -1,16 +1,20 @@
 class Linebot:
-    def flex(name, url, image):
-        i = {
-            {
+    def flex(url, name):
+
+        payload = {
+            "type": "flex",
+            "altText": "Flex Message",
+            "contents": {
                 "type": "bubble",
                 "hero": {
                     "type": "image",
-                    "url": image,
+                    "url": "https://kamigame.jp/wp-content/uploads/フェアリーテイル　発売日.png",
                     "size": "full",
                     "aspectRatio": "20:13",
                     "aspectMode": "cover",
                     "action": {
                         "type": "uri",
+                        "label": "Line",
                         "uri": url
                     }
                 },
@@ -20,55 +24,15 @@ class Linebot:
                     "contents": [
                         {
                             "type": "text",
-                            "text": "Brown Cafe",
-                            "weight": "bold",
-                            "size": "xl"
-                        },
-                        {
-                            "type": "box",
-                            "layout": "baseline",
-                            "margin": "md",
-                            "contents": [
-                                {
-                                    "type": "icon",
-                                    "size": "sm",
-                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                                },
-                                {
-                                    "type": "icon",
-                                    "size": "sm",
-                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                                },
-                                {
-                                    "type": "icon",
-                                    "size": "sm",
-                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                                },
-                                {
-                                    "type": "icon",
-                                    "size": "sm",
-                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                                },
-                                {
-                                    "type": "icon",
-                                    "size": "sm",
-                                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "4.0",
-                                    "size": "sm",
-                                    "color": "#999999",
-                                    "margin": "md",
-                                    "flex": 0
-                                }
-                            ]
+                            "text": name,
+                            "size": "xl",
+                            "weight": "bold"
                         },
                         {
                             "type": "box",
                             "layout": "vertical",
-                            "margin": "lg",
                             "spacing": "sm",
+                            "margin": "lg",
                             "contents": [
                                 {
                                     "type": "box",
@@ -77,78 +41,64 @@ class Linebot:
                                     "contents": [
                                         {
                                             "type": "text",
-                                            "text": "Place",
-                                            "color": "#aaaaaa",
+                                            "text": "神げー攻略サイト",
+                                            "flex": 1,
                                             "size": "sm",
-                                            "flex": 1
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
-                                            "wrap": True,
-                                            "color": "#666666",
-                                            "size": "sm",
-                                            "flex": 5
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "box",
-                                    "layout": "baseline",
-                                    "spacing": "sm",
-                                    "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "Time",
-                                            "color": "#aaaaaa",
-                                            "size": "sm",
-                                            "flex": 1
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": "10:00 - 23:00",
-                                            "wrap": True,
-                                            "color": "#666666",
-                                            "size": "sm",
-                                            "flex": 5
+                                            "color": "#AAAAAA"
                                         }
                                     ]
                                 }
                             ]
                         }
+
+                        #                 {
+                        #                     "type": "text",
+                        #                     "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
+                        #                     "flex": 5,
+                        #                     "size": "sm",
+                        #                     "color": "#666666",
+                        #                     "wrap": True
+                        #                 }
+                        #             ]
+                        #         },
+                        #         {
+                        #             "type": "box",
+                        #             "layout": "baseline",
+                        #             "spacing": "sm",
+                        #             "contents": [
+                        #                 {
+                        #                     "type": "text",
+                        #                     "text": "Time",
+                        #                     "flex": 1,
+                        #                     "size": "sm",
+                        #                     "color": "#AAAAAA"
+                        #                 },
+                        #                 {
+                        #                     "type": "text",
+                        #                     "text": "10:00 - 23:00",
+                        #                     "flex": 5,
+                        #                     "size": "sm",
+                        #                     "color": "#666666",
+                        #                     "wrap": True
+                        #                 }
+                        #             ]
+                        #         }
+                        #     ]
+                        # }
                     ]
                 },
                 "footer": {
                     "type": "box",
                     "layout": "vertical",
+                    "flex": 0,
                     "spacing": "sm",
                     "contents": [
-                        {
-                            "type": "button",
-                            "style": "link",
-                            "height": "sm",
-                            "action": {
-                                "type": "uri",
-                                "label": "CALL",
-                                "uri": "https://linecorp.com"
-                            }
-                        },
-                        {
-                            "type": "button",
-                            "style": "link",
-                            "height": "sm",
-                            "action": {
-                                "type": "uri",
-                                "label": "WEBSITE",
-                                "uri": "https://linecorp.com"
-                            }
-                        },
                         {
                             "type": "spacer",
                             "size": "sm"
                         }
-                    ],
-                    "flex": 0
+                    ]
                 }
             }
         }
+        return payload
