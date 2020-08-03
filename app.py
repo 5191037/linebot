@@ -76,11 +76,11 @@ def callback():
         db = client.scraping
         collection = db.bot_fe
 
-        if event.message.text == "News":
+        if event.message.text == "【News】":
             for record in collection.find(filter={'name': {'$regex': event.message.text}}):
                 event.message.text += record["name"] + record["url"] + "\n"
 
-        if event.message.text == "Search":
+        if event.message.text == "【Search】":
             hard_list = ["五十音順", "シリーズ"]
             items = [QuickReplyButton(action=MessageAction(label=f"{hard}", text=f"{hard}")) for hard in hard_list]
             messages = TextSendMessage(text="検索を始めます", quick_reply=QuickReply(items=items))
