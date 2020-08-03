@@ -57,7 +57,7 @@ def kamigame(URL):
     news = site_info[0].find_all('a')
 
     for info in tqdm(news):
-        name = info.find(class_='txt--title').get_text() + "【NEWS】"
+        name = info.find(class_='txt--title').get_text() + "【News】"
         url = (info.get('href'))
         # print(name, url + '\n')
         my_dict = {'_id': i, 'name': name, 'url': url}
