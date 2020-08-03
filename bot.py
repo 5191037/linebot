@@ -38,7 +38,7 @@ def kamigame(URL):
         url = ("https://kamigame.jp" + info.get('href'))
         image = ("https://kamigame.jp" + info.find('img').get('src'))
         # print(name, url, image + '\n')
-        my_dict = {'_id': i, 'name': name, 'url': url}
+        my_dict = {'_id': i, 'name': name, 'url': url, 'image': image}
         collection.insert_one(my_dict)
         i += 1
 
