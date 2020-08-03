@@ -1,5 +1,5 @@
 class Linebot:
-    def flex(url, name):
+    def flex(name, url, image):
 
         payload = {
             "type": "flex",
@@ -8,7 +8,7 @@ class Linebot:
                 "type": "bubble",
                 "hero": {
                     "type": "image",
-                    "url": "https://kamigame.jp/wp-content/uploads/フェアリーテイル　発売日.png",
+                    "url": "image",
                     "size": "full",
                     "aspectRatio": "20:13",
                     "aspectMode": "cover",
