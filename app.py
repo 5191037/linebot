@@ -13,13 +13,11 @@
 #  under the License.
 
 from __future__ import unicode_literals
-import os
 import sys
-import json
 
 from argparse import ArgumentParser
 from flask import Flask, request, abort
-from flask_restful import Resource, Api
+from flask_restful import Api
 
 from pymongo import MongoClient
 
@@ -28,8 +26,8 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
     QuickReplyButton, MessageAction, QuickReply,
-    FlexSendMessage, CarouselColumn, CarouselTemplate,
-    ImageMessage, TemplateSendMessage, URITemplateAction,
+    CarouselColumn, CarouselTemplate, TemplateSendMessage,
+    URITemplateAction,
 )
 
 
