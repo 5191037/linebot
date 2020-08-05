@@ -37,7 +37,6 @@ def kamigame(URL):
         name = info.get_text()
         url = ("https://kamigame.jp" + info.get('href'))
         image = ("https://kamigame.jp" + info.find('img').get('src'))
-        # print(name, url, image + '\n')
         my_dict = {'_id': i, 'name': name, 'url': url, 'image': image}
         collection.insert_one(my_dict)
         i += 1
@@ -49,7 +48,6 @@ def kamigame(URL):
         name = info.get_text()
         url = ("https://kamigame.jp" + info.get('href'))
         image = ("https://kamigame.jp" + info.find('img').get('src'))
-        # print(name, url, image + '\n')
         my_dict = {'_id': i, 'name': name, 'url': url, 'image': image}
         collection.insert_one(my_dict)
         i += 1
@@ -61,7 +59,6 @@ def kamigame(URL):
         name = info.find(class_='txt--title').get_text() + "【News】"
         url = info.get('href')
         image = info.find(class_='vertical-list__img-wrap').find('img').get('src')
-        # print(name, url, image + '\n')
         my_dict = {'_id': i, 'name': name, 'url': url, 'image': image}
         collection.insert_one(my_dict)
         i += 1
