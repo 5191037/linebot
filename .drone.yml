@@ -8,8 +8,10 @@ steps:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - docker build -t hc-docker.sophia.local/matsubara/linebot:1.1 ./
-      - docker push hc-docker.sophia.local/matsubara/linebot:1.1
+      - docker build -t hc-docker.sophia.local/matsubara/linebot:1.2 /drone/src
+      - docker tag hc-docker.sophia.local/matsubara/linebot:1.2 hc-docker.sophia.local/matsubara/linebot:latest
+      - docker push hc-docker.sophia.local/matsubara/linebot:1.2
+      - docker push hc-docker.sophia.local/matsubara/linebot:latest
 volumes:
 - name: dockersock
   host:
