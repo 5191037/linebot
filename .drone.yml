@@ -10,7 +10,7 @@ steps:
     commands:
       - docker build -t hc-docker.sophia.local/matsubara/linebot:1.1 ./
       - docker push hc-docker.sophia.local/matsubara/linebot:1.1
-#volumes:
-#- name: dockersock
-#  host:
-#    path: /var/run/docker.sock
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock
