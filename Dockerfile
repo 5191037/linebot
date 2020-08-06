@@ -1,0 +1,17 @@
+FROM python:3.8.3-buster
+
+RUN apt update
+
+RUN pip install flask && \
+    pip install beautifulsoup4 && \
+    pip install pymongo && \
+    pip install requests
+
+RUN mkdir /var/flask
+
+COPY ./app.py /var/flask
+COPY ./bot.py /var/flask
+
+EXPOSE 8080
+
+ENTRYPOINT ["/usr/local/bin/python", "/var/flask/app.py"]
