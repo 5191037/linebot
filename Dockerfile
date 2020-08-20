@@ -6,7 +6,6 @@ RUN pip install flask && \
     pip install beautifulsoup4 && \
     pip install pymongo && \
     pip install requests && \
-    pip install __future__ && \
     pip install argparse && \
     pip install flask && \
     pip install flask_restful && \
