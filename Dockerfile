@@ -1,6 +1,7 @@
 FROM python:3.8.3-buster
 
-RUN apt update
+RUN apt update && \
+    pip install -U pip
 
 RUN pip install flask && \
     pip install beautifulsoup4 && \
