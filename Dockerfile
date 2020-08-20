@@ -10,7 +10,6 @@ RUN pip install flask && \
     pip install argparse && \
     pip install flask && \
     pip install flask_restful && \
-    pip install pymongo && \
     pip install linebot && \
     pip install linebot.exceptions && \
     pip install linebot.models && \
