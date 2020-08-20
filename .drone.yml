@@ -34,6 +34,7 @@ steps:
         - docker-compose -f /mnt/samba/oc7/docker-compose.yml build bot
         - docker-compose -f /mnt/samba/oc7/docker-compose.yml up -d bot
 
+
 volumes:
 - name: dockersock
   host:
