@@ -12,6 +12,7 @@ steps:
       - docker tag hc-docker.sophia.local/matsubara/linebot:1.2 hc-docker.sophia.local/matsubara/linebot:latest
       - docker push hc-docker.sophia.local/matsubara/linebot:1.2
       - docker push hc-docker.sophia.local/matsubara/linebot:latest
+
   - name: notify
     image: plugins/webhook
     settings:
@@ -22,6 +23,7 @@ steps:
           "title": "matsubara",
           "text": "Line bot container test",
         }
+
   - name: deploy to production
     image: appleboy/drone-ssh
     settings:
