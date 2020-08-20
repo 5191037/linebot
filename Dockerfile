@@ -22,3 +22,4 @@ COPY ./bot.py /var/flask
 EXPOSE 8080
 
 ENTRYPOINT ["/usr/local/bin/python", "/var/flask/app.py"]
+
