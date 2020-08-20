@@ -17,7 +17,7 @@ import sys
 
 from argparse import ArgumentParser
 from flask import Flask, request, abort
-# from flask_restful import Api
+from flask_restful import Api
 
 from pymongo import MongoClient
 
@@ -32,7 +32,7 @@ from linebot.models import (
 
 
 app = Flask(__name__)
-# api = Api(app)
+api = Api(app)
 
 # get channel_secret and channel_access_token from your environment variable
 # channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
