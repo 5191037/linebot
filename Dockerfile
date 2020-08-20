@@ -12,9 +12,9 @@ RUN pip install flask && \
     pip install flask_restful && \
     pip install line_bot_sdk && \
     pip install tqdm && \
-    pip install selenium && \
+    pip install selenium
 #    pip install selenium.webdriver.chrome.options && \
-    pip install __future__
+#    pip install __future__
 
 RUN mkdir /var/flask
 
