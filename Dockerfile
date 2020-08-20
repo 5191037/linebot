@@ -10,9 +10,7 @@ RUN pip install flask && \
     pip install argparse && \
     pip install flask && \
     pip install flask_restful && \
-    pip install linebot && \
-    pip install linebot.exceptions && \
-    pip install linebot.models && \
+    pip install line_bot_sdk && \
     pip install tqdm && \
     pip install selenium && \
     pip install selenium.webdriver.chrome.options
