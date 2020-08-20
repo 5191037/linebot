@@ -5,7 +5,18 @@ RUN apt update
 RUN pip install flask && \
     pip install beautifulsoup4 && \
     pip install pymongo && \
-    pip install requests
+    pip install requests && \
+    pip install __future__ && \
+    pip install argparse && \
+    pip install flask && \
+    pip install flask_restful && \
+    pip install pymongo && \
+    pip install linebot && \
+    pip install linebot.exceptions && \
+    pip install linebot.models && \
+    pip install tqdm && \
+    pip install selenium && \
+    pip install selenium.webdriver.chrome.options
 
 RUN mkdir /var/flask
 
