@@ -12,6 +12,17 @@ steps:
       - docker tag hc-docker.sophia.local/matsubara/linebot:1.2 hc-docker.sophia.local/matsubara/linebot:latest
       - docker push hc-docker.sophia.local/matsubara/linebot:1.2
       - docker push hc-docker.sophia.local/matsubara/linebot:latest
+  - name: notify
+    image: plugins/webhook
+    settings:
+      urls: https://outlook.office.com/webhook/e2d69b49-9681-4767-a03e-4883174fae64@ecc17227-84d3-492b-a8a6-4774fd6c62f2/IncomingWebhook/63da66c252014c8e91d22272cfbeca47/b230c44f-7766-42cf-9254-9405b1adfd61
+      content_type: application/json
+      template: |
+        {
+          "title": "matsubara",
+          "text": "Line bot container test",
+        }
+
 volumes:
 - name: dockersock
   host:
