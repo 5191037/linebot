@@ -32,7 +32,7 @@ steps:
       password: hcadmin
       port: 22
       script:
-        - docker pull hc-admin.sophia.local/matsubara/linebot:latest
+        - docker pull hc-docker.sophia.local/matsubara/linebot:latest
         - docker-compose -f /mnt/samba/oc7/docker-compose.yml build bot
         - docker-compose -f /mnt/samba/oc7/docker-compose.yml up -d bot
 
