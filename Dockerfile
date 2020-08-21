@@ -9,7 +9,7 @@ RUN pip install flask && \
     pip install requests && \
     pip install argparse && \
     pip install flask && \
-    pip install Flask-RESTful && \
+    pip install flask-restful && \
     pip install line_bot_sdk && \
     pip install tqdm && \
     pip install selenium
