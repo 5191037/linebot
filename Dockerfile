@@ -14,6 +14,8 @@ RUN pip install flask && \
     pip install tqdm && \
     pip install selenium
 
+RUN apt -y install google-chrome-stable
+
 RUN mkdir /var/flask
 
 COPY ./app.py /var/flask
