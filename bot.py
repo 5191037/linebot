@@ -1,6 +1,6 @@
-import time
+# import time
 import re
-import requests
+# import requests
 import sys
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
@@ -8,9 +8,9 @@ from tqdm import tqdm
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.common.exceptions import TimeoutException
 
 """
 攻略情報ページの一覧を回収するソースコード
