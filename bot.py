@@ -79,7 +79,7 @@ if __name__ == "__main__":
         print("invaid argument.")
         sys.exit(2)
 
-    client = MongoClient('localhost', 27017)
+    client = MongoClient('mongodb', 27017, username='root', password='password')
     db = client.scraping
     collection = db.bot_fe
 
