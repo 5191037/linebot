@@ -74,7 +74,7 @@ def callback():
         if not isinstance(event.message, TextMessage):
             continue
 
-        client = MongoClient('localhost', 27017)
+        client = MongoClient('mongodb', 27017)
         db = client.scraping
         collection = db.bot_fe
 
