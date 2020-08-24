@@ -17,6 +17,7 @@ from selenium.webdriver.chrome.options import Options
 """
 
 
+
 def kamigame(URL):
     options = Options()
     options.add_argument('--headless')
