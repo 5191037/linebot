@@ -15,7 +15,9 @@ RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 
 RUN apt update && \
-    apt -y install google-chrome-stable
+    apt -y install google-chrome-stable && \
+    apt -y install libgconf-2-4 && \
+    apt -y install libnss3-dev
 
 RUN curl -O https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip && \
     unzip chromedriver_linux64.zip && \
