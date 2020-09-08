@@ -8,15 +8,15 @@ steps:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - docker build -t hc-docker.sophia.local/matsubara/linebot:1.5 /drone/src
-      - docker tag hc-docker.sophia.local/matsubara/linebot:1.5 hc-docker.sophia.local/matsubara/linebot:latest
-      - docker push hc-docker.sophia.local/matsubara/linebot:1.5
-      - docker push hc-docker.sophia.local/matsubara/linebot:latest
+      - docker build -t %%/matsubara/linebot:1.5 /drone/src
+      - docker tag %%/matsubara/linebot:1.5 %%/matsubara/linebot:latest
+      - docker push %%/matsubara/linebot:1.5
+      - docker push %%/matsubara/linebot:latest
 
   - name: notify
     image: plugins/webhook
     settings:
-      urls: https://outlook.office.com/webhook/e2d69b49-9681-4767-a03e-4883174fae64@ecc17227-84d3-492b-a8a6-4774fd6c62f2/IncomingWebhook/63da66c252014c8e91d22272cfbeca47/b230c44f-7766-42cf-9254-9405b1adfd61
+      urls: https://outlook.office.com/webhook/webhoksecret
       content_type: application/json
       template: |
         {
@@ -27,14 +27,14 @@ steps:
   - name: deploy to production
     image: appleboy/drone-ssh
     settings:
-      host: 192.168.0.30
-      username: hcadmin
-      password: hcadmin
-      port: 22
+      host: localhost
+      username: username
+      password: password
+      port: port
       script:
-        - docker pull hc-docker.sophia.local/matsubara/linebot:latest
-        - docker-compose -f /mnt/samba/oc7/docker-compose.yml build bot
-        - docker-compose -f /mnt/samba/oc7/docker-compose.yml up -d bot
+        - docker pull %%/matsubara/linebot:latest
+        - docker-compose -f /path/docker-compose.yml build bot
+        - docker-compose -f /path/docker-compose.yml up -d bot
 
 volumes:
 - name: dockersock
