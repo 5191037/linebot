@@ -37,10 +37,8 @@ api = Api(app)
 # get channel_secret and channel_access_token from your environment variable
 # channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
 # channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
-channel_secret = 'ccbef0158c3102cc91653b887bcd5101'
-channel_access_token = '5aCn1mIzYby8URWx7i6bjxp8I0Egn9ptN7NhG8BbxZ' \
-                       '+bqKPL7t6Dc6wLTRek4mOHPUKtyK2nDqHedeiMcs8ZQ42cCpTD7wA+y62epQ' \
-                       '/G1N9W3O6cosz63nx3fwxJxUd6S0Lgbe7KcCj8c1MyludDAQdB04t89/1O/w1cDnyilFU= '
+channel_secret = 'channel_secret'
+channel_access_token = 'channel_access_token'
 
 if channel_secret is None:
     print('Specify LINE_CHANNEL_SECRET as environment variable.')
